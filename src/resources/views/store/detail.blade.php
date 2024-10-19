@@ -10,7 +10,10 @@
 @section('content')
     <div class="detail-shop">
         <div class="detail-shop_content">
-            <h3>{{ $store->name }}</h3>
+            <div class="detail-shop_content__back">
+                <a href="/" class="back-button">&lt;</a>
+            </div>
+            <h3 class="detail-shop_content__name" >{{ $store->name }}</h3>
         </div>
         <img class="detail-shop_img" src="{{ asset('img/' . $store->store_id . '.jpg') }}" alt="{{ $store->name }}の店舗画像">
         <div class="detail-shop_content">

@@ -9,15 +9,38 @@
 }
 
 .detail-shop_img {
-    width: 100%;
+    width: 90%;
     max-height: 400px;
     object-fit: cover;
 }
 
 .detail-shop_content {
-    display: inline-block;
     padding: 15px 0;
     vertical-align: bottom;
+}
+.detail-shop_content__back,
+.detail-shop_content__name {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.detail-shop_content__back{
+    width: 30px;
+    height: 30px;
+    line-height: 1;
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    text-align: center;
+    background: #fff;
+    box-shadow: 2px 3px 4px -1px #575757;
+    border-radius: 6px;
+}
+.detail-shop_content__back a{
+    display: block;
+    color: #575757;
+    padding: 3px 5px 5px 5px;
+    width: 100%;
+    text-decoration: none;
 }
 
 .detail-shop_content h3,
