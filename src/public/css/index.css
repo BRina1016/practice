@@ -76,3 +76,37 @@
     transform: rotate(45deg);
     right: 15%;
 }
+
+.done_card {
+    width: 500px;
+    background: #fff;
+    margin: 20vh auto 0 auto;
+    box-shadow: 5px 6px 9px -5px #303030;
+    border-radius: 8px;
+}
+
+.done_card-body {
+    padding: 50px 20px;
+}
+
+.done_card-body p {
+    text-align: center;
+    display: block;
+    font-size: 24px !important;
+    padding: 0 0 40px;
+    font-size: 20px;
+}
+
+.done_card-body a {
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding: 7px 16px;
+    background-color: #315DFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}

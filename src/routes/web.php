@@ -23,11 +23,11 @@ Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{store_id}', [StoreController::class, 'show'])->name('store.detail');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register/thanks', function () { return view('thanks'); })->name('register.thanks');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/', [StoreController::class, 'index']);
 Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
+Route::get('/done', function () { return view('done'); })->name('reservation.done');
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
