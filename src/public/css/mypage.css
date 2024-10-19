@@ -1,0 +1,67 @@
+.content h2{
+    text-align: center;
+    font-size: 28px;
+    width: 100%;
+    margin: 0 auto 30px auto;
+    padding: 0;
+}
+.mypage_content {
+    width: 60%;
+    padding: 0;
+    margin: 0 0 0 4%;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.reservation_content{
+    width: 35%;
+    margin: 0;
+    padding: 0;
+}
+
+.mypage_content h3{
+    font-size: 22px;
+    text-align: left;
+}
+
+.mypage_content h4 {
+    font-size: 15px;
+    font-weight: normal;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+.mypage_reservation {
+    width: 100%;
+    margin: 10px 0 0 auto;
+    padding:35px 25px 40px 25px;
+    background: #315DFF;
+    color: #fff;
+    box-shadow: 4px 4px 5px -3px #575757;
+    border-radius: 8px;
+}
+
+.mypage_content .shop{
+    margin: 10px 5% 10px 0;
+}
+
+.selection-display__content tr{
+    display: block;
+    padding: 10px 0;
+}
+
+.selection-display__title{
+    font-weight: normal;
+    width: 120px;
+}
+
+.selection-display__title,
+.selection-display__text{
+    font-size: 14px;
+}
+
+.mypage_reservation-icon{
+    display: inline-block;
+    padding: 0 30px 3px 0;
+    vertical-align: middle;
+}
