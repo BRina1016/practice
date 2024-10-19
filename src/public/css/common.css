@@ -1,0 +1,115 @@
+body{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: #eee;
+}
+.app{
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: 80%;
+    max-width: 1340px;
+}
+.content {
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+}
+
+.menu_container {
+    display: flex;
+    align-items: center;
+    padding: 30px 0 20px 0;
+}
+
+.menu_title {
+    margin-left: 10px;
+    font-size: 24px;
+    color: #315DFF;
+    font-weight: bold;
+}
+.menu_icon {
+    width: 40px;
+    height: 40px;
+    background-color: #315DFF;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1003;
+    box-shadow: 4px 4px 5px -3px #575757;
+}
+
+.menu_icon span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background-color: white;
+    margin: 6px auto;
+    transition: all 0.3s ease;
+}
+
+.menu_icon span:nth-child(1){
+    width: 17px;
+    margin: 12px 0 6px 8px;
+}
+
+.menu_icon span:nth-child(3) {
+    width: 8px;
+    margin: 6px 0 6px 8px;
+}
+
+.menu_icon.open span:nth-child(1) {
+    width: 24px;
+    transform: rotate(45deg) translate(5px, 5px);
+    margin-top: 12px;
+}
+
+.menu_icon.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu_icon.open span:nth-child(3) {
+    width: 24px;
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    background: #fff;
+    z-index: 1002;
+}
+
+.menu.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.menu ul li {
+    margin: 20px 0;
+}
+
+.menu ul li a {
+    color: #315DFF;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}

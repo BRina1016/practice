@@ -1,0 +1,78 @@
+.shop {
+    display: inline-block;
+    background-color: white;
+    width: 320px;
+    overflow: hidden;
+    position: relative;
+    margin: 11px 5px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 4px 4px 5px -3px #575757;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.shop_img {
+    width: 320px;
+    height: 155px;
+    object-fit: cover;
+}
+
+.shop_content {
+    display: inline-block;
+    padding: 15px;
+    vertical-align: bottom;
+}
+
+.shop_content h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.shop_content p {
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.shop_content a {
+    display: inline-block;
+    padding: 7px 16px;
+    background-color: #315DFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.heart-icon {
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 0 0 0 auto;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.heart-icon::before,
+.heart-icon::after {
+    content: "";
+    width: 44%;
+    height: 75%;
+    background: #f61b1b;
+    border-radius: 25px 25px 0 0;
+    display: block;
+    position: absolute;
+}
+
+.heart-icon::before {
+    transform: rotate(-45deg);
+    left: 15%;
+}
+
+.heart-icon::after {
+    transform: rotate(45deg);
+    right: 15%;
+}
