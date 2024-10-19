@@ -25,6 +25,7 @@
     <div class="reservation">
         <div class="reservation_content">
             <h3>予約</h3>
+            <input class="reservation_calendar" type="date" value="2024-10-20">
         </div>
     </div>
 @endsection
