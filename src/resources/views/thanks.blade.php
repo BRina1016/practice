@@ -14,7 +14,7 @@
             <div class="thanks_card-body">
                 <div class="thanks_card-body">
                     <p>会員登録ありがとうございます</p>
-                    <a href="{{ route('login') }}" class="btn btn-primary">ログインする</a>
+                    <a href="{{ url('/login') }}" class="btn btn-primary">ログインする</a>
                 </div>
             </div>
         </div>

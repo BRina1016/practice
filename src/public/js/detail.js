@@ -1,4 +1,6 @@
-document.getElementById('dateInput').addEventListener('change', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('dateInput').addEventListener('change', function() {
         document.getElementById('display-date').textContent = this.value;
     });
 
@@ -8,9 +10,12 @@ document.getElementById('dateInput').addEventListener('change', function() {
     function updateDisplayTime() {
         var hour = document.getElementById('reservation_hour').value;
         var minute = document.getElementById('reservation_minute').value;
-        document.getElementById('display-time').textContent = hour + ':' + minute;
+        if (hour && minute) {
+            document.getElementById('display-time').textContent = hour + ':' + minute;
+        }
     }
 
     document.getElementById('number_of_people').addEventListener('change', function() {
         document.getElementById('display-number').textContent = this.value + '人';
     });
+});

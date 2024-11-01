@@ -6,7 +6,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\MyPageController;
-
+use App\Http\Controllers\ReservationController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +21,39 @@ use App\Http\Controllers\MyPageController;
 |
 */
 
-Route::get('/', [ShopController::class, 'index']);
+// ホームページ
+Route::get('/', [StoreController::class, 'index']);
+
+// 店舗一覧ページ
+Route::get('/stores', [StoreController::class, 'index'])->name('store.index');
+
+// 店舗の詳細ページ
 Route::get('/detail/{store_id}', [StoreController::class, 'show'])->name('store.detail');
+
+// ユーザー登録関連
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
-Route::get('/register/thanks', function () { return view('thanks'); })->name('register.thanks');
+Route::get('/thanks', function () {return view('thanks');})->name('thanks');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+// ユーザーログイン・ログアウト関連
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/', [StoreController::class, 'index']);
+Route::get('/logout', function (Request $request) {
+    Auth::logout();
+    $previousUrl = $request->header('referer');
+
+    if (parse_url($previousUrl, PHP_URL_PATH) === '/mypage') {
+        return redirect('/');
+    }
+
+    return redirect()->back();
+})->name('logout');
+
+// マイページ
 Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
-Route::get('/done', function () { return view('done'); })->name('reservation.done');
-Auth::routes();
+
+// 予約関連
+Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])->name('reservation.store');
+Route::get('/done', [ReservationController::class, 'showDonePage'])->name('reservation.done');

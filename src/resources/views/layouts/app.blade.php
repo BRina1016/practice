@@ -23,13 +23,21 @@
             </div>
 
             <div class="menu_title">Rese</div>
+            @yield('link')
         </div>
 
         <div class="menu" id="menu">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/register">Registration</a></li>
-                <li><a href="/login">Login</a></li>
+                @auth
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/mypage">Mypage</a></li>
+                @endauth
+
+                @guest
+                    <li><a href="/register">Registration</a></li>
+                    <li><a href="/login">Login</a></li>
+                @endguest
             </ul>
         </div>
     </header>
