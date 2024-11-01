@@ -25,10 +25,13 @@
 }
 
 .mypage_content h4 {
+    width: 100%;
     font-size: 15px;
     font-weight: normal;
     text-align: left;
     padding-bottom: 20px;
+    display: block;
+    vertical-align: middle;
 }
 
 .mypage_reservation {
@@ -64,4 +67,27 @@
     display: inline-block;
     padding: 0 30px 3px 0;
     vertical-align: middle;
+}
+
+.mypage_reservation-text{
+    display: inline-block;
+    width: 76%;
+}
+
+.mypage_reservation .delete-button__form{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.mypage_reservation .delete-button {
+    background: none;
+    border: 2px solid #fff;
+    border-radius: 90px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+    margin-right: 5px;
+    padding: 10px 6px 13px 6px;
+    line-height: 0;
 }

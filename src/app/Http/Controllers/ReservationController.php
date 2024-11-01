@@ -48,4 +48,12 @@ class ReservationController extends Controller
 
         return view('done', compact('reservationData'));
     }
+    public function delete($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        $reservation->delete();
+
+        return redirect()->route('mypage')->with('status', '予約が削除されました。');
+    }
 }

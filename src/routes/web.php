@@ -57,6 +57,7 @@ Route::get('/logout', function (Request $request) {
 
 // マイページ
 Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
+Route::delete('/reservation/{id}/delete', [ReservationController::class, 'delete'])->name('reservation.delete');
 
 // 予約関連
 Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])->name('reservation.store');

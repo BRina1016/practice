@@ -15,7 +15,14 @@
     <h3>予約状況</h3>
     @foreach ($reservations as $index => $reservation)
     <div class="mypage_reservation">
-        <h4><span class="material-icons mypage_reservation-icon">watch_later</span>予約{{ $index + 1 }}</h4>
+        <h4><span class="material-icons mypage_reservation-icon">watch_later</span>
+            <span class="mypage_reservation-text">予約{{ $index + 1 }}</span>
+            <form class="delete-button__form" action="{{ route('reservation.delete', ['id' => $reservation->id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="delete-button" onclick="return confirm('この予約を削除してよろしいですか？')">×</button>
+            </form>
+        </h4>
         <div class="selection-display">
             <div class="selection-display__content">
                 <table>
@@ -30,7 +37,7 @@
                         </tr>
                         <tr>
                             <th class="selection-display__title">Time</th>
-                            <td class="selection-display__text">{{ $reservation->time }}</td>
+                            <td class="selection-display__text">{{ \Carbon\Carbon::createFromFormat('H:i:s', $reservation->time)->format('H:i') }}</td>
                         </tr>
                         <tr>
                             <th class="selection-display__title">Number</th>
