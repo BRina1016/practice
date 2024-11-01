@@ -30,6 +30,10 @@ Route::get('/stores', [StoreController::class, 'index'])->name('store.index');
 // 店舗の詳細ページ
 Route::get('/detail/{store_id}', [StoreController::class, 'show'])->name('store.detail');
 
+Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])
+    ->middleware('auth')
+    ->name('reservation.store');
+
 // ユーザー登録関連
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);

@@ -10,34 +10,38 @@
 @endsection
 
 @section('content')
-<h2>testさん</h2>
+<h2>{{ $user->name }}さん</h2>
 <div class="mypage_content reservation_content">
-    <h3>予約業況</h3>
+    <h3>予約状況</h3>
+    @foreach ($reservations as $index => $reservation)
     <div class="mypage_reservation">
-        <h4><span class="material-icons mypage_reservation-icon">watch_later</span>予約1</h4>
+        <h4><span class="material-icons mypage_reservation-icon">watch_later</span>予約{{ $index + 1 }}</h4>
         <div class="selection-display">
             <div class="selection-display__content">
-                <table><tbody>
-                    <tr>
-                        <th class="selection-display__title">Shop</th>
-                        <td class="selection-display__text">テキスト</td>
-                    </tr>
-                    <tr>
-                        <th class="selection-display__title">Date</th>
-                        <td class="selection-display__text">テキスト</td>
-                    </tr>
-                    <tr>
-                        <th class="selection-display__title">Time</th>
-                        <td class="selection-display__text">テキスト</td>
-                    </tr>
-                    <tr>
-                        <th class="selection-display__title">Number</th>
-                        <td class="selection-display__text">テキスト</td>
-                    </tr>
-                </tbody></table>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th class="selection-display__title">Shop</th>
+                            <td class="selection-display__text">{{ $reservation->store ? $reservation->store->name : '店舗情報がありません' }}</td>
+                        </tr>
+                        <tr>
+                            <th class="selection-display__title">Date</th>
+                            <td class="selection-display__text">{{ $reservation->date }}</td>
+                        </tr>
+                        <tr>
+                            <th class="selection-display__title">Time</th>
+                            <td class="selection-display__text">{{ $reservation->time }}</td>
+                        </tr>
+                        <tr>
+                            <th class="selection-display__title">Number</th>
+                            <td class="selection-display__text">{{ $reservation->number_of_people }}人</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+    @endforeach
 </div>
 <div class="mypage_content">
     <h3>お気に入り店舗</h3>
