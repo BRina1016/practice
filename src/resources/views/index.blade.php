@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('css')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ asset('css/index.css')}}">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
 <script src="{{ asset('js/index.js') }}"></script>
 @endsection
 
@@ -40,14 +42,14 @@
 
 @section('content')
     @foreach($stores as $store)
-    <div class="shop">
+    <div class="shop" data-store-id="{{ $store->store_id }}" data-favorite-url="{{ route('favorites.store') }}">
         <img class="shop_img" src="{{ asset('img/' . $store->store_id . '.jpg') }}" alt="{{ $store->name }}の店舗画像">
         <div class="shop_content">
             <h3>{{ $store->name }}</h3>
             <p>#{{ $store->area->name }} #{{ $store->genre->name }}</p>
             <a href="{{ route('store.detail', ['store_id' => $store->store_id]) }}">詳しくみる</a>
         </div>
-        <div class="heart-icon"></div>
+        <div class="heart-icon material-symbols-outlined {{ in_array($store->store_id, $favorites) ? 'favorited' : '' }}">favorite</div>
     </div>
     @endforeach
 @endsection

@@ -18,6 +18,7 @@
 }
 
 .shop_content {
+    width: 85%;
     display: inline-block;
     padding: 15px;
     vertical-align: bottom;
@@ -45,36 +46,24 @@
     font-size: 14px;
 }
 
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
 .heart-icon {
-    display: inline-block;
-    vertical-align: bottom;
-    margin: 0 0 0 auto;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+    margin: 0 0 15px 0;
+    cursor: pointer;
+    transition: fill 0.3s ease;
+    color: #eeeeee;
 }
 
-.heart-icon::before,
-.heart-icon::after {
-    content: "";
-    width: 44%;
-    height: 75%;
-    background: #f61b1b;
-    border-radius: 25px 25px 0 0;
-    display: block;
-    position: absolute;
-}
-
-.heart-icon::before {
-    transform: rotate(-45deg);
-    left: 15%;
-}
-
-.heart-icon::after {
-    transform: rotate(45deg);
-    right: 15%;
+.heart-icon.favorited {
+    color: #ff0000;
+    fill: #ff0000;
 }
 
 .done_card {

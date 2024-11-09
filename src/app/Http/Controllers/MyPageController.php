@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MyPageController extends Controller
 {
@@ -13,15 +13,19 @@ class MyPageController extends Controller
     {
         $user = Auth::user();
 
-        // ユーザーの予約情報を取得し、店舗情報も合わせて取得
         $reservations = Reservation::where('user_id', $user->id)
-                                    ->with('store') // `Reservation`モデルに`store`リレーションが設定されている場合
+                                    ->with('store')
                                     ->get();
 
-        // お気に入りの店舗情報（例として2件のみ取得）
-        $stores = Store::with(['area', 'genre'])->take(2)->get();
+        $favorites = $user ? DB::table('favorites')
+                            ->where('user_id', $user->id)
+                            ->pluck('store_id')
+                            ->toArray() : [];
 
-        // 必要なデータをビューに渡す
-        return view('mypage', compact('user', 'reservations', 'stores'));
+        $stores = Store::with(['area', 'genre'])
+                        ->whereIn('store_id', $favorites)
+                        ->get();
+
+        return view('mypage', compact('user', 'reservations', 'favorites', 'stores'));
     }
 }

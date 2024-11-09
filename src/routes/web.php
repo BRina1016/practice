@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,7 @@ Route::get('/', [StoreController::class, 'index']);
 
 // 店舗一覧ページ
 Route::get('/stores', [StoreController::class, 'index'])->name('store.index');
+Route::get('/', [FavoriteController::class, 'index'])->name('favorites.index');
 
 // 店舗の詳細ページ
 Route::get('/detail/{store_id}', [StoreController::class, 'show'])->name('store.detail');
@@ -53,11 +55,16 @@ Route::get('/logout', function (Request $request) {
     }
 
     return redirect()->back();
-})->name('logout');
+})->name('logout.get');
 
 // マイページ
 Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
 Route::delete('/reservation/{id}/delete', [ReservationController::class, 'delete'])->name('reservation.delete');
+
+// マイページ お気に入り
+Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store'); // /index用：追加・削除
+Route::delete('/favorites', [FavoriteController::class, 'store'])->name('favorites.destroy'); // /index用：追加・削除
+Route::delete('/mypage/favorites', [FavoriteController::class, 'destroyFromMypage'])->name('favorites.destroy.mypage'); // /mypage用：削除のみ
 
 // 予約関連
 Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])->name('reservation.store');

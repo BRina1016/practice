@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The stores that the user has favorited.
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany(Store::class, 'favorites', 'user_id', 'store_id');
+    }
 }

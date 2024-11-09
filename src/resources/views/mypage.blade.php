@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('css')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ asset('css/index.css')}}">
 <link rel="stylesheet" href="{{ asset('css/mypage.css')}}">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
+<script src="{{ asset('js/index.js') }}"></script>
+<script src="{{ asset('js/mypage.js') }}"></script>
 @endsection
 
 @section('link')
@@ -52,15 +56,15 @@
 </div>
 <div class="mypage_content">
     <h3>お気に入り店舗</h3>
-    @foreach ($stores->take(2) as $store)
-    <div class="shop">
+    @foreach($stores as $store)
+    <div class="shop" data-store-id="{{ $store->store_id }}">
         <img class="shop_img" src="{{ asset('img/' . $store->store_id . '.jpg') }}" alt="{{ $store->name }}の店舗画像">
         <div class="shop_content">
             <h3>{{ $store->name }}</h3>
             <p>#{{ $store->area->name }} #{{ $store->genre->name }}</p>
             <a href="{{ route('store.detail', ['store_id' => $store->store_id]) }}">詳しくみる</a>
         </div>
-        <div class="heart-icon"></div>
+        <div class="heart-icon material-symbols-outlined {{ in_array($store->store_id, $favorites) ? 'favorited' : '' }}" data-store-id="{{ $store->store_id }}">favorite</div>
     </div>
     @endforeach
 </div>
