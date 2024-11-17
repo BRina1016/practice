@@ -23,7 +23,7 @@
             </div>
 
             <div class="menu_title">Rese</div>
-            @yield('link')
+        @yield('link')
         </div>
 
         <div class="menu" id="menu">

@@ -1,3 +1,7 @@
+.content{
+    padding-bottom: 50px;
+}
+
 .content h2{
     text-align: center;
     font-size: 28px;
@@ -37,11 +41,14 @@
 .mypage_reservation {
     width: 100%;
     margin: 10px 0 0 auto;
-    padding:35px 25px 40px 25px;
+    padding:35px 0 40px 25px;
     background: #315DFF;
     color: #fff;
     box-shadow: 4px 4px 5px -3px #575757;
     border-radius: 8px;
+}
+.mypage_content .shop{
+    width: 300px;
 }
 
 .mypage_content .shop{
@@ -65,7 +72,7 @@
 
 .mypage_reservation-icon{
     display: inline-block;
-    padding: 0 30px 3px 0;
+    padding: 0 10px 3px 0;
     vertical-align: middle;
 }
 
@@ -90,4 +97,84 @@
     margin-right: 5px;
     padding: 10px 6px 13px 6px;
     line-height: 0;
+}
+
+@media screen and (max-width: 1500px) {
+    .mypage_content .shop {
+        width: 42%;
+        margin: 11px 5px;
+    }
+    .mypage_content .shop_img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 1340px) {
+    .mypage_content,
+    .reservation_content{
+        display: block;
+        width: 98%;
+        margin: 0 auto;
+        padding-bottom: 30px;
+    }
+    .mypage_reservation{
+        width: 45%;
+        display: inline-block;
+        margin: 11px 7px;
+    }
+    .mypage_reservation-icon {
+        padding: 0 5px 3px 0;
+    }
+    .mypage_reservation-text {
+        width: 80%;
+    }
+    .mypage_content .shop {
+        width: 30%;
+        margin: 11px 5px;
+    }
+}
+@media screen and (max-width: 1199px) {
+    .mypage_reservation-text {
+        width: 78%;
+    }
+}
+@media screen and (max-width: 900px) {
+    .mypage_reservation-text {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 699px) {
+    .mypage_reservation-text {
+        width: 80%;
+    }
+    .mypage_reservation {
+        width: 100%;
+        margin: 11px 0;
+    }
+
+    .mypage_content .shop {
+        width: 45%;
+        margin: 11px 5px;
+    }
+}
+
+@media screen and (max-width: 499px) {
+    .mypage_content .shop {
+        width: 100%;
+        margin: 11px 0;
+    }
+    .mypage_reservation-text {
+        width: 70%;
+    }
+    .selection-display__title{
+        text-align: left;
+        width: 80px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .mypage_reservation-text {
+        width: 60%;
+    }
 }

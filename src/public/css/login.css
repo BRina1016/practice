@@ -30,18 +30,21 @@
     margin: 0 auto;
     padding: 7px 0;
     text-align: center;
-
 }
 
 .form-control {
     display: inline-block;
     color: #3D3D3D;
     width: 320px;
-    border-bottom: 1px solid #3D3D3D;
     text-align: left;
-    vertical-align: bottom;
+    vertical-align: top;
     padding-bottom: 5px;
     font-size: 14px;
+}
+
+.form-control input{
+    width: 100%;
+    border-bottom: 1px solid #3D3D3D;
 }
 
 .login_card_btn {
@@ -56,4 +59,24 @@
     color: #fff;
     font-size: 14px;
     border-radius: 8px;
+}
+
+.text-danger{
+    color: #F75F5F;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 499px) {
+    .login {
+        width: 98%;
+        min-width: 150px;
+    }
+
+    .login_card {
+        padding: 15px 10px 15px 10px;
+    }
+
+    .form-control {
+        width: 80%;
+    }
 }

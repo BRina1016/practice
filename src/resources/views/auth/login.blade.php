@@ -5,9 +5,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 @endsection
 
-@section('link')
-@endsection
-
 @section('content')
 <div class="login">
     <div class="row justify-content-center">
@@ -25,13 +22,17 @@
                             </label>
 
                             <div class="col-md-6 form-control">
-                                <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" autofocus>
-
+                                <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="Email" autofocus>
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <span class="text-danger">
+                                        {{ $message }}
                                     </span>
                                 @enderror
+                                @if(session('email_error'))
+                                    <span class="text-danger">
+                                        {{ session('email_error') }}
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -40,14 +41,18 @@
                                 <span class="material-icons">lock</span>
                             </label>
 
-                            <div class="col-md-6  form-control">
-                                <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
-
+                            <div class="col-md-6 form-control">
+                                <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" placeholder="Password" autocomplete="current-password">
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <span class="text-danger">
+                                        {{ $message }}
                                     </span>
                                 @enderror
+                                @if(session('password_error'))
+                                    <span class="text-danger">
+                                        {{ session('password_error') }}
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

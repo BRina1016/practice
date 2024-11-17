@@ -73,8 +73,8 @@
 }
 
 .reservation_calendar{
-    width: 30%;
-    min-width: 200px;
+    width: 25%;
+    min-width: 130px;
     padding: 3px 5px;
     margin: 10px 20px 0 20px;
     font-size: 13px;
@@ -130,4 +130,56 @@
 .reservation-box__button{
     width: 100%;
     color: #fff;
+}
+
+.error-message {
+    color: #f64141 !important;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 1500px) {
+}
+
+@media screen and (max-width: 1340px) {
+
+}
+
+@media screen and (max-width: 900px) {
+    .content{
+        padding-bottom: 50px;
+    }
+    .detail-shop,
+    .reservation {
+        display: block;
+        width: 100%;
+    }
+    .detail-shop{
+        width: 98%;
+        margin: 0 auto;
+    }
+    .detail-shop_content__box{
+        padding-bottom: 30px;
+    }
+    .detail-shop_content__box,
+    .reservation_content{
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 699px) {
+    .detail-shop_content__box,
+    .reservation_content {
+        width: 98%;
+        margin: 0 auto;
+    }
+    .reservation_calendar{
+        width: 80%;
+    }
+    .selection-display__title,
+    .selection-display__text {
+        display: block;
+        width: 100%;
+    }
 }

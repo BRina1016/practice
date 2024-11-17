@@ -3,53 +3,44 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
+
     protected function redirectTo()
     {
-        return '/login';
+        return '/';
     }
+
     public function login(Request $request)
     {
+        $validatedData = $request->validate([
+            'email' => 'required|email|max:255',
+            'password' => 'required',
+        ], [
+            'email.required' => 'メールアドレスを入力してください。',
+            'email.email' => '正しいメールアドレス形式で入力してください。',
+            'password.required' => 'パスワードを入力してください。',
+        ]);
+
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
-        } else {
-            return redirect()->back()->withErrors(['email' => 'ログイン情報が正しくありません']);
+
+        if (!Auth::attempt($credentials)) {
+            return redirect()->back()->withInput($request->except('password'))->with('password_error', 'パスワードが違います。');
         }
+
+        return redirect()->intended($this->redirectTo);
     }
 }

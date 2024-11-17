@@ -67,7 +67,7 @@
 }
 
 .done_card {
-    width: 500px;
+    width: 480px;
     background: #fff;
     margin: 20vh auto 0 auto;
     box-shadow: 5px 6px 9px -5px #303030;
@@ -101,11 +101,15 @@
 }
 
 .search_box {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
     margin: 0 0 0 auto;
     padding: 5px;
     box-shadow: 2px 3px 4px -1px #303030;
     border-radius: 6px;
     background-color: #fff;
+    right: 0;
 }
 
 .select-wrapper,
@@ -152,4 +156,73 @@
 
 .search-keyword-input{
     padding-left: 25px;
+}
+
+@media screen and (max-width: 1500px) {
+    .shop {
+        width: 24%;
+        margin: 11px 3px;
+    }
+}
+
+@media screen and (max-width: 1340px) {
+    .app{
+        width: 90%;
+        max-width: 90%;
+    }
+    .shop {
+        width: 32%;
+        margin: 11px 3px;
+    }
+    .shop_img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    .search_box {
+        display: block;
+        width: 500px;
+        max-width: 100%;
+        margin-top: 10px;
+    }
+    .shop {
+        width: 46%;
+        margin: 11px 7px;
+    }
+    .shop_content{
+        width: 80%;
+    }
+    .material-symbols-outlined {
+        font-size: 28px !important;
+    }
+}
+
+@media screen and (max-width: 499px) {
+    .content{
+        text-align: center;
+    }
+    .shop {
+        width: 98%;
+        margin: 11px auto;
+    }
+    .shop_content {
+        width: 80%;
+        text-align: left;
+        display: inline-block;
+    }
+    .material-symbols-outlined{
+        font-size: 30px !important;
+    }
+    .app {
+        width: 90%;
+        max-width: 90%;
+    }
+    .done_card{
+        width:98%;
+    }
+    .done_card-body {
+        padding: 50px 10px;
+    }
 }

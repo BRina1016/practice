@@ -15,17 +15,16 @@
             <h2 class="register_head">Registration</h2>
             <div class="register_card">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" novalidate>
                         @csrf
-
                         <div class="form-group">
                             <label for="name" class="form-group_icon">
                                 <span class="material-icons">person</span>
                             </label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Username" required autofocus>
                             @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="text-danger" role="alert">
+                                    {{ $message ?: 'ユーザーネームを入力してください。' }}
                                 </span>
                             @enderror
                         </div>
@@ -36,8 +35,8 @@
                             </label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required>
                             @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="text-danger" role="alert">
+                                    {{ $message ?: 'メールアドレスを入力してください。' }}
                                 </span>
                             @enderror
                         </div>
@@ -48,8 +47,8 @@
                             </label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required>
                             @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="text-danger" role="alert">
+                                    {{ $message ?: 'パスワードを入力してください。' }}
                                 </span>
                             @enderror
                         </div>

@@ -34,8 +34,14 @@ class StoreController extends Controller
         $areas = Area::all();
         $genres = Genre::all();
 
-        return view('index', compact('stores', 'areas', 'genres', 'areaId', 'genreId', 'keyword'));
+        $favorites = [];
+        if (auth()->check()) {
+            $favorites = auth()->user()->favorites->pluck('store_id')->toArray();
+        }
+
+        return view('index', compact('stores', 'areas', 'genres', 'areaId', 'genreId', 'keyword', 'favorites'));
     }
+
     public function show($store_id)
     {
 
