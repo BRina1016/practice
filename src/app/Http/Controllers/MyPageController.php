@@ -6,6 +6,7 @@ use App\Models\Store;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class MyPageController extends Controller
 {
@@ -27,5 +28,24 @@ class MyPageController extends Controller
                         ->get();
 
         return view('mypage', compact('user', 'reservations', 'favorites', 'stores'));
+    }
+
+    public function editReservation($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        return response()->json($reservation);
+    }
+
+    public function updateReservation(Request $request, $id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        $reservation->update([
+            'date' => $request->input('date'),
+            'time' => $request->input('hour') . ':' . $request->input('minute') . ':00',
+            'number_of_people' => $request->input('number_of_people'),
+        ]);
+
+        return redirect()->route('mypage')->with('success', '予約が更新されました。');
     }
 }

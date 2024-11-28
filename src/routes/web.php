@@ -39,7 +39,7 @@ Route::post('/detail/{store_id}/complete', [ReservationController::class, 'compl
 // ユーザー登録関連
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
-Route::get('/thanks', function () {return view('thanks');})->name('thanks');
+Route::get('/thanks', function () { return view('thanks'); })->name('thanks');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // ユーザーログイン・ログアウト関連
@@ -60,11 +60,13 @@ Route::get('/logout', function (Request $request) {
 // マイページ
 Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
 Route::delete('/reservation/{id}/delete', [ReservationController::class, 'delete'])->name('reservation.delete');
+Route::get('/reservation/{id}/edit', [MyPageController::class, 'editReservation'])->name('reservation.edit');
+Route::patch('/reservation/{id}', [MyPageController::class, 'updateReservation'])->name('reservation.update');
 
 // マイページ お気に入り
-Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store'); // /index用：追加・削除
-Route::delete('/favorites', [FavoriteController::class, 'store'])->name('favorites.destroy'); // /index用：追加・削除
-Route::delete('/mypage/favorites', [FavoriteController::class, 'destroyFromMypage'])->name('favorites.destroy.mypage'); // /mypage用：削除のみ
+Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
+Route::delete('/favorites', [FavoriteController::class, 'store'])->name('favorites.destroy');
+Route::delete('/mypage/favorites', [FavoriteController::class, 'destroyFromMypage'])->name('favorites.destroy.mypage');
 
 // 予約関連
 Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])->name('reservation.store');

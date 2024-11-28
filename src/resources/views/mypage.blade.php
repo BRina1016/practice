@@ -10,21 +10,20 @@
 <script src="{{ asset('js/mypage.js') }}"></script>
 @endsection
 
-@section('link')
-@endsection
-
 @section('content')
 <h2>{{ $user->name }}さん</h2>
+
 <div class="mypage_content reservation_content">
     <h3>予約状況</h3>
     @foreach ($reservations as $index => $reservation)
     <div class="mypage_reservation">
-        <h4><span class="material-icons mypage_reservation-icon">watch_later</span>
+        <h4>
+            <span class="material-icons mypage_reservation-icon">watch_later</span>
             <span class="mypage_reservation-text">予約{{ $index + 1 }}</span>
             <form class="delete-button__form" action="{{ route('reservation.delete', ['id' => $reservation->id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="delete-button" onclick="return confirm('この予約を削除してよろしいですか？')">×</button>
+                <button type="submit" class="delete-button">×</button>
             </form>
         </h4>
         <div class="selection-display">
@@ -49,11 +48,13 @@
                         </tr>
                     </tbody>
                 </table>
+                <button class="edit-button" data-reservation-id="{{ $reservation->id }}">予約変更</button>
             </div>
         </div>
     </div>
     @endforeach
 </div>
+
 <div class="mypage_content">
     <h3>お気に入り店舗</h3>
     @foreach($stores as $store)
@@ -67,5 +68,43 @@
         <div class="heart-icon material-symbols-outlined {{ in_array($store->store_id, $favorites) ? 'favorited' : '' }}" data-store-id="{{ $store->store_id }}">favorite</div>
     </div>
     @endforeach
+</div>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <form id="editReservationForm" method="POST">
+            @csrf
+            @method('PATCH') <!-- PATCH メソッドを指定 -->
+            <input type="hidden" id="reservationId" name="reservation_id">
+            <div class="reservation_calendar">
+                <label for="dateInput">Date</label>
+                <input type="date" id="dateInput" name="date" required>
+            </div>
+            <div class="reservation_box">
+                <label for="reservation_hour">Time</label>
+                <select class="reservation_time" id="reservation_hour" name="hour" required>
+                    @for ($i = 0; $i < 24; $i++)
+                        <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}">{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
+                    @endfor
+                </select>
+                <span style="color:#000;">:</span>
+                <select id="reservation_minute" name="minute" required>
+                    @for ($i = 0; $i < 60; $i += 5)
+                        <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}">{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
+                    @endfor
+                </select>
+            </div>
+            <div class="reservation_box">
+                <label for="number_of_people">Number</label>
+                <select id="number_of_people" name="number_of_people" required>
+                    @for ($i = 1; $i <= 10; $i++)
+                        <option value="{{ $i }}">{{ $i }}人</option>
+                    @endfor
+                </select>
+            </div>
+            <button type="submit" id="saveReservation">保存</button>
+        </form>
+        <button class="close-modal">×</button>
+    </div>
 </div>
 @endsection
