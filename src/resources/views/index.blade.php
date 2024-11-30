@@ -9,35 +9,35 @@
 @endsection
 
 @section('link')
-    <div class="search_box">
-        <form id="searchForm" action="{{ route('store.index') }}" method="GET" class="search-form">
-            <div class="select-wrapper">
-                <select name="area_id" class="search-area-select" onchange="submitForm()">
-                    <option value="all" {{ (isset($areaId) && $areaId == 'all') ? 'selected' : '' }}>All areas</option>
-                    @foreach($areas as $area)
-                    <option value="{{ $area->id }}" {{ (isset($areaId) && $areaId == $area->id) ? 'selected' : '' }}>
-                        {{ $area->name }}
-                    </option>
-                    @endforeach
-                </select>
-            </div>
+<div class="search_box">
+    <form id="searchForm" action="{{ route('store.index') }}" method="GET" class="search-form">
+        <div class="select-wrapper">
+            <select name="area_id" class="search-area-select" onchange="submitForm()">
+                <option value="all" {{ (isset($areaId) && $areaId == 'all') ? 'selected' : '' }}>All areas</option>
+                @foreach($areas as $area)
+                <option value="{{ $area->id }}" {{ (isset($areaId) && $areaId == $area->id) ? 'selected' : '' }}>
+                    {{ $area->name }}
+                </option>
+                @endforeach
+            </select>
+        </div>
 
-            <div class="select-wrapper">
-                <select name="genre_id" class="search-genre-select" onchange="submitForm()">
-                    <option value="all" {{ (isset($genreId) && $genreId == 'all') ? 'selected' : '' }}>All genre</option>
-                    @foreach($genres as $genre)
-                    <option value="{{ $genre->id }}" {{ (isset($genreId) && $genreId == $genre->id) ? 'selected' : '' }}>
-                        {{ $genre->name }}
-                    </option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="select-wrapper">
+            <select name="genre_id" class="search-genre-select" onchange="submitForm()">
+                <option value="all" {{ (isset($genreId) && $genreId == 'all') ? 'selected' : '' }}>All genre</option>
+                @foreach($genres as $genre)
+                <option value="{{ $genre->id }}" {{ (isset($genreId) && $genreId == $genre->id) ? 'selected' : '' }}>
+                    {{ $genre->name }}
+                </option>
+                @endforeach
+            </select>
+        </div>
 
-            <div class="search-wrapper">
-                <input type="text" name="keyword" value="{{ $keyword ?? '' }}" placeholder="Search ..." class="search-keyword-input" oninput="submitForm()">
-            </div>
-        </form>
-    </div>
+        <div class="search-wrapper">
+            <input type="text" name="keyword" value="{{ $keyword ?? '' }}" placeholder="Search ..." class="search-keyword-input" oninput="submitForm()">
+        </div>
+    </form>
+</div>
 @endsection
 
 @section('content')
@@ -50,6 +50,9 @@
             <a href="{{ route('store.detail', ['store_id' => $store->store_id]) }}">詳しくみる</a>
         </div>
         <div class="heart-icon material-symbols-outlined {{ in_array($store->store_id, $favorites) ? 'favorited' : '' }}">favorite</div>
+        <div class="rating">
+            &#9733; {{ number_format($store->average_rating, 1) }}
+        </div>
     </div>
     @endforeach
 @endsection

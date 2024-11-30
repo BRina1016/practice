@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -31,10 +32,11 @@ Route::get('/', [FavoriteController::class, 'index'])->name('favorites.index');
 
 // 店舗の詳細ページ
 Route::get('/detail/{store_id}', [StoreController::class, 'show'])->name('store.detail');
-
 Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])
     ->middleware('auth')
     ->name('reservation.store');
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+Route::get('/reviews/{store_id}', [ReviewController::class, 'index'])->name('reviews.index');
 
 // ユーザー登録関連
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');

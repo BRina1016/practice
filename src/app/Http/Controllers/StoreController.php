@@ -29,7 +29,7 @@ class StoreController extends Controller
             $query->where('name', 'LIKE', '%' . $keyword . '%');
         }
 
-        $stores = $query->get();
+        $stores = $query->with('reviews')->get();
 
         $areas = Area::all();
         $genres = Genre::all();
@@ -44,12 +44,7 @@ class StoreController extends Controller
 
     public function show($store_id)
     {
-
-        $store = Store::where('store_id', $store_id)->firstOrFail();
-
-        $storeData = $store->toArray();
-        $storeData['name'] = mb_convert_encoding($storeData['name'], 'UTF-8', 'auto');
-        $storeData['description'] = mb_convert_encoding($storeData['description'], 'UTF-8', 'auto');
+        $store = Store::where('store_id', $store_id)->with('reviews')->firstOrFail();
 
         return view('store.detail', compact('store'));
     }

@@ -21,4 +21,15 @@ class Store extends Model
     {
         return $this->belongsTo(Genre::class, 'genre_id', 'id');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'store_id', 'store_id');
+    }
+
+    public function getAverageRatingAttribute()
+    {
+        $average = $this->reviews->avg('rating');
+        return $average ? round($average, 1) : 0;
+    }
 }

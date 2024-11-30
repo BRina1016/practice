@@ -66,6 +66,9 @@
             <a href="{{ route('store.detail', ['store_id' => $store->store_id]) }}">詳しくみる</a>
         </div>
         <div class="heart-icon material-symbols-outlined {{ in_array($store->store_id, $favorites) ? 'favorited' : '' }}" data-store-id="{{ $store->store_id }}">favorite</div>
+        <div class="rating">
+            &#9733; {{ number_format($store->average_rating, 1) }}
+        </div>
     </div>
     @endforeach
 </div>
@@ -74,7 +77,7 @@
     <div class="modal-content">
         <form id="editReservationForm" method="POST">
             @csrf
-            @method('PATCH') <!-- PATCH メソッドを指定 -->
+            @method('PATCH')
             <input type="hidden" id="reservationId" name="reservation_id">
             <div class="reservation_calendar">
                 <label for="dateInput">Date</label>
@@ -102,7 +105,7 @@
                     @endfor
                 </select>
             </div>
-            <button type="submit" id="saveReservation">保存</button>
+            <button type="submit" id="saveReservation" class="modal-button">保存</button>
         </form>
         <button class="close-modal">×</button>
     </div>

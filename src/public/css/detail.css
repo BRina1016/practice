@@ -1,3 +1,6 @@
+.content{
+    padding-bottom: 50px;
+}
 .detail-shop,
 .reservation {
     display: inline-block;
@@ -136,6 +139,100 @@
     color: #f64141 !important;
     font-size: 11px;
     margin-top: 5px;
+}
+
+.reviews{
+    padding-top: 40px;
+}
+
+.review-button{
+    font-size: 13px;
+    padding: 3px 8px;
+    margin: 15px 0;
+    border: 1px solid #303030;
+    border-radius: 5px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    margin: 15% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 5px 6px 9px -5px #303030;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-modal {
+    background: none;
+    border: 2px solid #303030;
+    border-radius: 90px;
+    font-size: 16px;
+    color: #303030;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    background: none;
+    margin-right: 5px;
+    padding: 10px 6px 13px 6px;
+    line-height: 0;
+}
+.review_form-control{
+    width: 100%;
+    font-size: 14px;
+}
+
+#star-rating .star {
+    font-size: 1.2rem;
+    color: #ccc;
+    cursor: pointer;
+}
+
+#star-rating .star.selected {
+    color: #ffe867;
+}
+
+.reviewsContainer{
+    width: 98%;
+    max-height: 350px;
+    overflow-y: scroll;
+    font-size: 14px;
+    padding: 10px 0 0 0;
+    margin: 0 auto;
+}
+
+.reviewsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.review{
+    padding: 10px 0;
+    border-bottom: 1px solid #303030;
+}
+
+.review_ster{
+    color: #303030;
+    font-size: 12px;
 }
 
 @media screen and (max-width: 1500px) {

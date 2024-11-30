@@ -20,7 +20,7 @@
 .shop_content {
     width: 85%;
     display: inline-block;
-    padding: 15px;
+    padding: 15px 15px 5px 15px;
     vertical-align: bottom;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .heart-icon {
-    margin: 0 0 15px 0;
+    margin: 0 0 5px 0;
     cursor: pointer;
     transition: fill 0.3s ease;
     color: #eeeeee;
@@ -156,6 +156,14 @@
 
 .search-keyword-input{
     padding-left: 25px;
+}
+
+.rating{
+    display: block !important;
+    text-align: right;
+    margin: 0 20px 15px auto;
+    font-size: 14px;
+    color: #575757;
 }
 
 @media screen and (max-width: 1500px) {
