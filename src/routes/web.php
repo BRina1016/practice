@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -9,6 +10,8 @@ use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -73,3 +76,9 @@ Route::delete('/mypage/favorites', [FavoriteController::class, 'destroyFromMypag
 // 予約関連
 Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])->name('reservation.store');
 Route::get('/done', [ReservationController::class, 'showDonePage'])->name('reservation.done');
+
+Auth::routes();
+
+Auth::routes(['verify' => true]);
+
+Route::get('/', [StoreController::class, 'index'])->middleware(['auth'])->name('home');

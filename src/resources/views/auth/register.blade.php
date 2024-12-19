@@ -9,54 +9,58 @@
 @endsection
 
 @section('content')
-<div class="register">
+<div class="container register">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h2 class="register_head">Registration</h2>
-            <div class="register_card">
-                <div class="card-body">
+            <div class="card">
+                <div class="card-header register_head">{{ __('Register') }}</div>
+
+                <div class="card-body register_card">
                     <form method="POST" action="{{ route('register') }}" novalidate>
                         @csrf
-                        <div class="form-group">
+
+                        <div class="row mb-3 form-group">
                             <label for="name" class="form-group_icon">
                                 <span class="material-icons">person</span>
                             </label>
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Username" required autofocus>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                             @error('name')
                                 <span class="text-danger" role="alert">
-                                    {{ $message ?: 'ユーザーネームを入力してください。' }}
+                                    {{ $message }}
                                 </span>
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="row mb-3 form-group">
                             <label for="email" class="form-group_icon">
                                 <span class="material-icons">email</span>
                             </label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                             @error('email')
-                                <span class="text-danger" role="alert">
-                                    {{ $message ?: 'メールアドレスを入力してください。' }}
+                                <span class="text-danger invalid-feedback" role="alert">
+                                    {{ $message }}
                                 </span>
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="row mb-3 form-group">
                             <label for="password" class="form-group_icon">
                                 <span class="material-icons">lock</span>
                             </label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required>
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                             @error('password')
-                                <span class="text-danger" role="alert">
-                                    {{ $message ?: 'パスワードを入力してください。' }}
+                                <span class="text-danger invalid-feedback" role="alert">
+                                    {{ $message }}
                                 </span>
                             @enderror
                         </div>
 
-                        <div class="form-group mb-0 register_card_btn">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('登録') }}
-                            </button>
+                        <div class="row mb-0 form-group register_card_btn">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>

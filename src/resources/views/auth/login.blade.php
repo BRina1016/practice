@@ -6,14 +6,14 @@
 @endsection
 
 @section('content')
-<div class="login">
+<div class="container login">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <h2 class="login_head">Login</h2>
+                <div class="card-header login_head">{{ __('Login') }}</div>
 
-                <div class="login_card">
-                    <form method="POST" action="{{ route('login') }}">
+                <div class="card-body login_card">
+                    <form method="POST" action="{{ route('login') }}" novalidate>
                         @csrf
 
                         <div class="row mb-3 form-group">
@@ -22,17 +22,13 @@
                             </label>
 
                             <div class="col-md-6 form-control">
-                                <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="Email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
                                 @error('email')
-                                    <span class="text-danger">
+                                    <span class="text-danger" role="alert">
                                         {{ $message }}
                                     </span>
                                 @enderror
-                                @if(session('email_error'))
-                                    <span class="text-danger">
-                                        {{ session('email_error') }}
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -42,24 +38,20 @@
                             </label>
 
                             <div class="col-md-6 form-control">
-                                <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" placeholder="Password" autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
                                 @error('password')
-                                    <span class="text-danger">
+                                    <span class="text-danger" role="alert">
                                         {{ $message }}
                                     </span>
                                 @enderror
-                                @if(session('password_error'))
-                                    <span class="text-danger">
-                                        {{ session('password_error') }}
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4 login_card_btn">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('ログイン') }}
+                                    {{ __('Login') }}
                                 </button>
                             </div>
                         </div>
