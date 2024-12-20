@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // お気に入り削除機能
+
     const heartIcons = document.querySelectorAll('.heart-icon');
 
     heartIcons.forEach(icon => {
@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 予約変更モーダル機能
     const modal = document.getElementById('editModal');
     const closeModal = document.querySelector('.close-modal');
     const editButtons = document.querySelectorAll('.edit-button');
@@ -44,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             const reservationId = this.dataset.reservationId;
 
-            // 編集データを取得してモーダルに反映
             fetch(`/reservation/${reservationId}/edit`, {
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -60,14 +58,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 editMinuteField.value = timeParts[1];
                 editNumberField.value = data.number_of_people;
 
-                editForm.action = `/reservation/${reservationId}`; // 正しいURLを設定
-                modal.style.display = 'block'; // モーダルを表示
+                editForm.action = `/reservation/${reservationId}`;
+                modal.style.display = 'block';
             })
             .catch(error => console.error('Error:', error));
         });
     });
 
-    // モーダルを閉じる処理
     closeModal.addEventListener('click', function () {
         modal.style.display = 'none';
     });

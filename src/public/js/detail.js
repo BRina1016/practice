@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // 予約機能のスクリプト
+
     const reservationForm = document.getElementById("reservationForm");
     const dateInput = document.getElementById("dateInput");
     const reservationHour = document.getElementById("reservation_hour");
@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
     reservationForm.addEventListener("submit", function (event) {
         let isValid = true;
 
-        // 日付のバリデーション
         if (dateInput.value === "" || dateInput.value === null || dateInput.value === undefined) {
             dateError.textContent = "日付を選択してください。";
             if (!dateInput.nextElementSibling || dateInput.nextElementSibling !== dateError) {
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // 時間のバリデーション
         const hour = reservationHour.value;
         const minute = reservationMinute.value;
         if ((hour === "00" && minute === "00") || hour === "" || minute === "") {
@@ -49,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // 人数のバリデーション
         if (!numberOfPeople.value) {
             numberError.textContent = "人数を選択してください。";
             if (!numberOfPeople.nextElementSibling) {
@@ -62,13 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // バリデーション失敗時は送信を中止
         if (!isValid) {
             event.preventDefault();
         }
     });
 
-    // 選択値のプレビュー表示
     dateInput.addEventListener('change', function () {
         document.getElementById('display-date').textContent = this.value;
     });
@@ -88,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('display-number').textContent = this.value + '人';
     });
 
-    // レビュー機能のスクリプト
     const reviewModal = document.getElementById('reviewModal');
     const reviewButton = document.getElementById('reviewButton');
     const closeReviewModal = document.getElementById('closeReviewModal');
@@ -105,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const storeId = storeMetaTag.content;
 
-    // ページロード時にレビューを取得して表示
     fetch(`/reviews/${storeId}`)
         .then(response => {
             if (!response.ok) {

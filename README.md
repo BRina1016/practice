@@ -10,6 +10,7 @@ Rese（リーズ）
 
 - 開発環境：http://localhost/
 - phpMyAdmin:：http://localhost:8080/
+- MailHog：http://localhost:8026/
 
 ## 他のレポジトリ
 
@@ -52,17 +53,18 @@ https://docs.google.com/spreadsheets/d/150wy28z3z4K247SAE0BzzOmoayoVqa7nLqdKE1wC
 **Laravel 環境構築**
 
 1. `docker-compose exec php bash`
-2. `composer install`
-3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
+2. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
    cp .env.example .env
 
-4. .env に以下を追加
+3. .env に以下を追加
    DB_CONNECTION=mysql
    DB_HOST=mysql
    DB_PORT=3306
    DB_DATABASE=laravel_db
    DB_USERNAME=laravel_user
    DB_PASSWORD=laravel_pass
+
+4. `composer install`
 
 5. アプリケーションキーの作成
    php artisan key:generate
