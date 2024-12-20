@@ -26,7 +26,7 @@ use Illuminate\Http\Request;
 |
 */
 
-// ホームページ
+// トップ
 Route::get('/', [StoreController::class, 'index']);
 
 // 店舗一覧ページ
