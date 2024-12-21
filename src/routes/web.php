@@ -26,14 +26,11 @@ use Illuminate\Http\Request;
 |
 */
 
-// トップ
 Route::get('/', [StoreController::class, 'index']);
 
-// 店舗一覧ページ
 Route::get('/stores', [StoreController::class, 'index'])->name('store.index');
 Route::get('/', [FavoriteController::class, 'index'])->name('favorites.index');
 
-// 店舗の詳細ページ
 Route::get('/detail/{store_id}', [StoreController::class, 'show'])->name('store.detail');
 Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])
     ->middleware('auth')
@@ -41,13 +38,11 @@ Route::post('/detail/{store_id}/complete', [ReservationController::class, 'compl
 Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/reviews/{store_id}', [ReviewController::class, 'index'])->name('reviews.index');
 
-// ユーザー登録関連
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/thanks', function () { return view('thanks'); })->name('thanks');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-// ユーザーログイン・ログアウト関連
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -62,18 +57,15 @@ Route::get('/logout', function (Request $request) {
     return redirect()->back();
 })->name('logout.get');
 
-// マイページ
 Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
 Route::delete('/reservation/{id}/delete', [ReservationController::class, 'delete'])->name('reservation.delete');
 Route::get('/reservation/{id}/edit', [MyPageController::class, 'editReservation'])->name('reservation.edit');
 Route::patch('/reservation/{id}', [MyPageController::class, 'updateReservation'])->name('reservation.update');
 
-// マイページ お気に入り
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
 Route::delete('/favorites', [FavoriteController::class, 'store'])->name('favorites.destroy');
 Route::delete('/mypage/favorites', [FavoriteController::class, 'destroyFromMypage'])->name('favorites.destroy.mypage');
 
-// 予約関連
 Route::post('/detail/{store_id}/complete', [ReservationController::class, 'completeReservation'])->name('reservation.store');
 Route::get('/done', [ReservationController::class, 'showDonePage'])->name('reservation.done');
 
