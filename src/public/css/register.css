@@ -4,7 +4,7 @@
     padding: 0;
 }
 .register_head{
-    background: #315DFF;
+    background: #5B5554;
     padding: 15px 20px;
     border-radius: 8px 8px 0 0;
     color: #fff;
@@ -48,7 +48,7 @@
 }
 
 .btn-primary{
-    background:#315DFF;
+    background: #5B5554;
     padding: 5px 15px;
     color: #fff;
     font-size: 14px;
@@ -80,7 +80,7 @@
     margin: 0 auto;
     display: block;
     padding: 7px 16px;
-    background-color: #315DFF;
+    background-color: #5B5554;
     color: white;
     text-decoration: none;
     border-radius: 5px;

@@ -13,7 +13,7 @@
         <div class="col-md-8">
             <div class="done_card-body">
                 <div class="done_card-body">
-                    <p>ご予約ありがとうございます</p>
+                    <p>ご予約ありがとうございます。</p>
                     <a href="/" class="btn btn-primary">戻る</a>
                 </div>
             </div>

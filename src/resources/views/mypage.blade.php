@@ -59,7 +59,7 @@
     <h3>お気に入り店舗</h3>
     @foreach($stores as $store)
     <div class="shop" data-store-id="{{ $store->store_id }}">
-        <img class="shop_img" src="{{ asset('img/' . $store->store_id . '.jpg') }}" alt="{{ $store->name }}の店舗画像">
+        <img class="shop_img" src="{{ asset('img/' . $store->store_id . '.png') }}" alt="{{ $store->name }}の店舗画像">
         <div class="shop_content">
             <h3>{{ $store->name }}</h3>
             <p>#{{ $store->area->name }} #{{ $store->genre->name }}</p>

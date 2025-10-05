@@ -1,10 +1,10 @@
 # アプリケーション名
 
-Rese（リーズ）
+laravel_practice
 
 ## 作成した目的
 
-自社で予約サービス
+Laravel 練習用 飲食店の予約サービスのアプリを想定した Laravel の練習
 
 ## URL
 
@@ -18,7 +18,6 @@ https://github.com/BRina1016/rese.git
 
 ## 機能一覧
 
-飲食店予約サービス
 ・会員登録機能
 ・ログイン・ログアウト機能
 ・ユーザー情報取得（予約・お気に入り一覧取得）
@@ -28,7 +27,7 @@ https://github.com/BRina1016/rese.git
 ・飲食店予約情報追加・削除・変更機能
 ・飲食店評価機能
 ・エリア・ジャンル・店名検索機能
-・メール認証機能
+・メール認証機能 (途中)
 
 ## 使用技術(実行環境)
 
@@ -36,13 +35,17 @@ https://github.com/BRina1016/rese.git
 - Laravel 8.83.27
 - mysql 15.1
 
-## テーブル設計
+## テーブル仕様書
 
-https://docs.google.com/spreadsheets/d/150wy28z3z4K247SAE0BzzOmoayoVqa7nLqdKE1wCzbA/edit?gid=1635115377#gid=1635115377
+https://docs.google.com/spreadsheets/d/18JZ3SIUtBdMqRYJztDO2PIVWwcRkhxB6j3xj4C4R1-M/edit?gid=0#gid=0
+
+## 基本設計書
+
+https://docs.google.com/spreadsheets/d/18JZ3SIUtBdMqRYJztDO2PIVWwcRkhxB6j3xj4C4R1-M/edit?gid=663308514#gid=663308514
 
 ## ER 図
 
-https://docs.google.com/spreadsheets/d/150wy28z3z4K247SAE0BzzOmoayoVqa7nLqdKE1wCzbA/edit?gid=320603785#gid=320603785
+https://docs.google.com/spreadsheets/d/18JZ3SIUtBdMqRYJztDO2PIVWwcRkhxB6j3xj4C4R1-M/edit?gid=982964951#gid=982964951
 
 **Docker ビルド**
 

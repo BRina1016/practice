@@ -19,7 +19,7 @@
         <h3 class="detail-shop_content__name">{{ $store->name }}</h3>
     </div>
     <div class="detail-shop_content__box">
-        <img class="detail-shop_img" src="{{ asset('img/' . $store->store_id . '.jpg') }}" alt="{{ $store->name }}の店舗画像">
+        <img class="detail-shop_img" src="{{ asset('img/' . $store->store_id . '.png') }}" alt="{{ $store->name }}の店舗画像">
         <div class="detail-shop_content">
             <a class="shop_tag">#{{ $store->area->name }}</a>
             <a class="shop_tag">#{{ $store->genre->name }}</a>
