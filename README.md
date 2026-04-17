@@ -4,7 +4,12 @@ laravel_practice
 
 ## 作成した目的
 
-Laravel 練習用 飲食店の予約サービスのアプリを想定した Laravel の練習
+Laravel を用いた Web アプリケーション開発の練習。
+飲食店予約サービスを想定したアプリケーションの作成。
+
+CRM 連携の学習を目的として **Zoho CRM API を利用した外部サービス連携** の実装。
+
+予約作成時に Zoho CRM へ商談(Deal)を作成し、予約確認書 PDF を自動生成して Zoho の商談に添付する機能を実装
 
 ## URL
 
@@ -28,12 +33,45 @@ https://github.com/BRina1016/rese.git
 ・飲食店評価機能
 ・エリア・ジャンル・店名検索機能
 ・メール認証機能 (途中)
+・Zoho CRM API 連携
+・Zoho Contact 自動作成
+・Zoho Deal 自動作成
+・予約変更時の Zoho 商談更新
+・予約削除時の Zoho 商談削除
+・予約確認書 PDF 生成
+・Zoho 商談への PDF 自動添付
 
 ## 使用技術(実行環境)
 
 - PHP 7.4.9
 - Laravel 8.83.27
-- mysql 15.1
+- MySQL
+- Docker / Docker Compose
+- Zoho CRM API
+- DomPDF（PDF 生成）
+- MailHog（メールテスト）
+
+## 外部サービス連携
+
+本アプリでは Zoho CRM API を利用した CRM 連携機能を実装しています。
+
+### 実装内容
+
+・予約作成時に Zoho CRM の Contact を取得または作成
+・予約情報を Zoho CRM の Deal として登録
+・予約変更時に Zoho 商談を更新
+・予約削除時に Zoho 商談を削除
+・予約確認書 PDF を生成
+・生成した PDF を Zoho 商談に自動添付
+
+### 処理フロー
+
+・ユーザーが予約を作成
+・予約情報をデータベースへ保存
+・Zoho CRM API を使用して Contact を取得または作成
+・Zoho CRM の Deal を作成
+・予約確認書 PDF を生成
+・生成した PDF を Zoho CRM の Deal へ添付
 
 ## テーブル仕様書
 

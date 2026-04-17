@@ -2,13 +2,12 @@ FROM php:7.4-fpm
 
 COPY php.ini /usr/local/etc/php/
 
-
 RUN apt-get update && apt-get install -y \
     libmariadb-dev \
     zlib1g-dev \
     libzip-dev \
-
     unzip \
+    fonts-ipafont-gothic \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo_mysql zip
 

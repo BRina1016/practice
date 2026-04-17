@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Services\ZohoService;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +75,10 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/', [StoreController::class, 'index'])->middleware(['auth'])->name('home');
+
+Route::get('/test-zoho', function (ZohoService $zoho) {
+    return $zoho->createContact('テスト太郎', 'test@example.com');
+});
+
+Route::get('/reservation/{id}/pdf', [MyPageController::class, 'downloadReservationPdf'])
+    ->name('reservation.pdf');

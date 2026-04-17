@@ -15,11 +15,11 @@
 
 <div class="mypage_content reservation_content">
     <h3>予約状況</h3>
-    @foreach ($reservations as $index => $reservation)
+    @foreach ($reservations as $reservation)
     <div class="mypage_reservation">
         <h4>
             <span class="material-icons mypage_reservation-icon">watch_later</span>
-            <span class="mypage_reservation-text">予約{{ $index + 1 }}</span>
+            <span class="mypage_reservation-text">予約番号 {{ 'RSV-' . str_pad($reservation->id, 6, '0', STR_PAD_LEFT) }}</span>
             <form class="delete-button__form" action="{{ route('reservation.delete', ['id' => $reservation->id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
@@ -48,6 +48,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <a href="{{ route('reservation.pdf', ['id' => $reservation->id]) }}" class="pdf-button">
+                    PDFをダウンロード
+                </a>
                 <button class="edit-button" data-reservation-id="{{ $reservation->id }}">予約変更</button>
             </div>
         </div>
